@@ -32,14 +32,14 @@ describe("createTokenWithExpiry", () => {
 });
 
 describe("verifyToken", () => {
-    it('returns the decoded token if verification is successful', () => {
-        const result = verifyToken(expectedTokenWithoutExpiry, secret);
-
+    it('returns the decoded token if verification is successful',async () => {
+        const result = await verifyToken(expectedTokenWithoutExpiry, secret);
+console.log("returnssss", result)
         expect(result).toEqual(payload);
     });
 
-    it('returns false if token cannot be verified', () => {
-        const result = verifyToken(expectedTokenWithoutExpiry, 'thewrongsecret');
+    it('returns false if token cannot be verified', async () => {
+        const result = await verifyToken(expectedTokenWithoutExpiry, 'thewrongsecret');
 
         expect(result).toBeFalse();
     });
